@@ -2,9 +2,75 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      .box {
+        padding: 20px;
+        margin: 10px;
+        border: 2px solid black;
+      }
+      #grandparent {
+        background: lightblue;
+      }
+      #parent {
+        background: lightgreen;
+      }
+      #child {
+        background: lightcoral;
+      }
+      #output {
+        margin-top: 20px;
+        padding: 10px;
+        background: #f0f0f0;
+      }
+    </style>
   </head>
   <body>
-    TODO
+    <h2>Event Bubbling Demo</h2>
+    <p>Click on any box to see event propagation:</p>
+
+    <div id="grandparent" class="box">
+      Grandparent
+      <div id="parent" class="box">
+        Parent
+        <div id="child" class="box">Child (Click me!)</div>
+      </div>
+    </div>
+
+    <div id="output"></div>
+
+    <script>
+      const output = document.getElementById("output");
+
+      document
+        .getElementById("grandparent")
+        .addEventListener("click", function (event) {
+          output.innerHTML += "<div>🔵 Grandparent clicked!</div>";
+        });
+
+      document
+        .getElementById("parent")
+        .addEventListener("click", function (event) {
+          output.innerHTML += "<div>🟢 Parent clicked!</div>";
+        });
+
+      document
+        .getElementById("child")
+        .addEventListener("click", function (event) {
+          output.innerHTML += "<div>🔴 Child clicked!</div>";
+
+          // Stop bubbling
+          // event.stopPropagation();
+        });
+
+      document.body.addEventListener("click", function (event) {
+        if (event.target.id === "output" || event.target === document.body) {
+          output.innerHTML = "<div><em>Output cleared. Click a box!</em></div>";
+        }
+      });
+    </script>
   </body>
 </html>
