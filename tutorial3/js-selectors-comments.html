@@ -93,7 +93,7 @@
 
     const firstTitleOfFirstBook = firstBook.querySelector(".title");
     console.log(firstTitleOfFirstBook.firstChild); // Logs first child of the first title occurence -> Here it is "HTML 5" 3
-    console.log(firstTitleOfFirstBook.querySelector(".title").firstChild.nodeType); // Selects the nodeType of the first title occurence -> Here it is 3 (for text)
+    console.log(firstTitleOfFirstBook.firstChild.nodeType); // Selects the nodeType of the first title occurence -> Here it is 3 (for text)
     console.log(firstTitleOfFirstBook.firstChild.textContent); // Returns the actual text as string
     // Hint: Appending .nodeType would be undefined when accessed on .textContent because .textContent returns a string, not a DOM node, and strings don't have a .nodeType property
 
