@@ -1,0 +1,73 @@
+<!-- 
+TASK: 
+  - Task 1: Write a CSS rule to make the text in the second <span> in the second <h3> of the parent element article in pink and italics
+  - Task 2: Write another CSS rule to color the link text in an <a> element in green, where the title contains "contact" 
+  and follows directly after a paragraph. If you hover over the text, it should be blue.
+-->
+
+<html>
+  <head>
+    <style>
+      /* TODO */
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>CSS Selector Challenge</h1>
+    </header>
+
+    <section class="sidebar">
+      <h3>
+        <span>First span</span>
+        <span>Second span</span>
+      </h3>
+      <a href="#about" title="about">About</a>
+    </section>
+
+    <article class="content">
+      <h3>
+        <span>First span in h3</span>
+        <span></span>
+        <span>Third span</span>
+      </h3>
+      <h3>
+        <span>First span</span>
+        <span>Second span! - TASK 1</span>
+      </h3>
+      <div>
+        <h3>
+          <span>First span</span>
+          <span>second span</span>
+        </h3>
+        <h3>
+          <span>First span</span>
+          <span>Second span</span>
+        </h3>
+      </div>
+    </article>
+
+    <section class="info">
+      <p>Info paragraph.</p>
+      <a href="#link" title="info">Link with title</a>
+    </section>
+
+    <footer>
+      <div>
+        <a href="#terms" title="cool-contact-form">
+          Terms (no paragraph before)
+        </a>
+      </div>
+
+      <p>Footer paragraph.</p>
+      <a href="#contact" title="cool-contact-form">
+        TARGET THIS: Contact - TASK 2
+      </a>
+
+      <div>
+        <p>Paragraph in div</p>
+        <a href="#help" title="help">Help (paragraph in div)</a>
+      </div>
+    </footer>
+  </body>
+</html>
