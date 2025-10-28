@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h1>DOM Manipulation Task</h1>
+    <!-- TASK: 
+         1. Create a button element and add it after the <p> in .inner
+         2. When the button is clicked, add a new paragraph with text to the #output div -->
+
+    <div class="container">
+      <h2>Section 1</h2>
+      <div class="nested">
+        <p>Nested element</p>
+        <div class="inner">
+          <p>Inner content</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="output">
+      <h3>Output:</h3>
+    </div>
+
+    <div class="container">
+      <h2>Section 2</h2>
+      <p>Other content</p>
+    </div>
+
+    <script>
+      // TASK:
+      // 1. Create a button element
+      // 2. Add text to the button
+      // 3. Append the button to .inner div (after the <p>)
+      // 4. Add click event listener to the button
+      // 5. When clicked: create a new paragraph, add text, append to #output
+
+      const button = document.createElement("button");
+      button.textContent = "Click Me!";
+
+      const innerDiv = document.querySelector(".inner");
+      innerDiv.appendChild(button);
+      //   innerDiv.prepend(button); // adds on beginning
+      //   const paragraph = innerDiv.querySelector("p");
+      //   innerDiv.insertBefore(button, paragraph); // adds before specific element
+
+      button.addEventListener("click", function () {
+        const newParagraph = document.createElement("p");
+        newParagraph.textContent = "New message added!";
+
+        const outputDiv = document.getElementById("output");
+        outputDiv.appendChild(newParagraph);
+      });
+    </script>
+  </body>
+</html>
