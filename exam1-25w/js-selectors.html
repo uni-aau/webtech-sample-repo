@@ -72,7 +72,7 @@
 
     var firstBook = document.querySelector(".book");
 
-    console.log(firstBook);
+    console.dir(firstBook);
     console.log(firstBook.children);
     console.log(firstBook.childNodes);
     console.log(firstBook.firstChild);
@@ -87,8 +87,10 @@
     // https://www.w3schools.com/jsref/prop_node_nodetype.asp
     console.log(firstBook.nodeType);
     console.log(firstBook.innerHTML);
+    console.log(firstBook.outerHTML);
 
     const firstTitleOfFirstBook = firstBook.querySelector(".title");
+    console.log(firstTitleOfFirstBook)
     console.log(firstTitleOfFirstBook.firstChild);
     console.log(firstTitleOfFirstBook.firstChild.nodeType);
     console.log(firstTitleOfFirstBook.firstChild.textContent);
@@ -109,7 +111,6 @@
     console.log(document.getElementsByTagName("div")[2]);
 
     console.log(document.getElementsByClassName("buy-btn"));
-    console.log(document.querySelector(".buy-btn").closest("section"));
 
     var lastTitle = document
       .getElementById("book-list")
@@ -119,6 +120,7 @@
     console.log(lastTitle.textContent);
 
     firstBook.classList.add("book-class");
+    console.log(firstBook.classList);
     console.log(firstBook.classList.contains("book-class"))
   </script>
 </html>

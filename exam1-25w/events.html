@@ -67,8 +67,7 @@
         });
 
       document.body.addEventListener("click", function (event) {
-        console.dir(event.target);
-        
+        console.dir(event.target)        
         if (event.target.id === "output" || event.target === document.body) {
           output.innerHTML = "<div><em>Output cleared. Click a box!</em></div>";
         }

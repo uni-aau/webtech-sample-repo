@@ -90,6 +90,7 @@
     console.log(firstBook.nodeType); // Logs the type of node (1 = element node)
     console.log(firstBook.innerHTML); // Logs the whole html structure of the first book
     // firstBook.innerHTML = "<b>Hello World</b>" // Change selected html structure with new html code
+    console.log(firstBook.outerHTML); // Logs the whole html structure inside the first book element including the parent element (div)
 
     const firstTitleOfFirstBook = firstBook.querySelector(".title");
     console.log(firstTitleOfFirstBook.firstChild); // Logs first child of the first title occurence -> Here it is "HTML 5" 3
@@ -113,7 +114,6 @@
     console.log(document.getElementsByTagName("div")[2]); // Same as the previous line but using array-like syntax
 
     console.log(document.getElementsByClassName("buy-btn")); // Logs all elements with the class "buy-btn"
-    console.log(document.querySelector(".buy-btn").closest("section")); // Logs the closest ancestor <section> element to the first ".buy-btn"
 
     var lastTitle = document
       .getElementById("book-list")
@@ -124,6 +124,7 @@
     console.log(lastTitle.textContent); // Logs the updated text content
 
     firstBook.classList.add("book-class"); // class="book-class" gets appended to the element
+    console.log(firstBook.classList);
     console.log(firstBook.classList.contains("book-class")); // checks if the class list of firstBook contains "book-class"
   </script>
 </html>
