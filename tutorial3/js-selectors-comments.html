@@ -119,8 +119,11 @@
       .getElementById("book-list")
       .lastElementChild.querySelector(".title"); // Selects the last title in the book list
     // More detailed: selects the element with the id book-list -> gets the last element one hierarchy lower (child) -> then searches in this child element for the first occurence of the class "title"
-    
+
     lastTitle.textContent = "Changed Book Title"; // Changes the text content of the last title
     console.log(lastTitle.textContent); // Logs the updated text content
+
+    firstBook.classList.add("book-class"); // class="book-class" gets appended to the element
+    console.log(firstBook.classList.contains("book-class")); // checks if the class list of firstBook contains "book-class"
   </script>
 </html>

@@ -1,14 +1,19 @@
 <!-- 
 TASK: 
-  - Task 1: Write a CSS rule to make the text in the second <span> in the second <h3> of the parent element article in pink and italics
-  - Task 2: Write another CSS rule to color the link text in an <a> element in green, where the title contains "contact" 
-  and follows directly after a paragraph. If you hover over the text, it should be blue.
+  What lines of code are styled?
 -->
 
 <html>
   <head>
     <style>
-      /* TODO */
+      article > h3:nth-child(2) span:nth-child(2) {
+        color: pink;
+        font-style: italic;
+      }
+
+      p + a[title*="contact"] {
+        color: green;
+      }
     </style>
   </head>
 
