@@ -3,9 +3,6 @@
     <script>
       // Hoisting - Javascript automatically moves definitions to the top
       // For example console.log(x); var x = 5 ==> var x; console.log(x); x = 5;
-      var a = 2;
-      var a;
-      console.log(a); // 2 -> Hoisting: var a; var a; a = 2
 
       // 1. VAR (Function Scope & Hoisting)
       function varExample() {
@@ -52,6 +49,9 @@
         console.log(a); // Output: 5 (after assignment)
 
         // Looks like var a; log(); a = 5; log()
+
+        var a; // is moved to top
+        console.log(a); // 5
       }
       varHoisting();
 
@@ -81,9 +81,11 @@
       mutabilityConst();
 
       function someFunct(name) {
-        let test, test2 = 123; // 2x same let variable
+        let test, test2 = 123; // let test; let test2 = 123
+        console.log(test); // undefined
+        console.log(test2); // 123
 
-        let a = (b = 123); // a is let variable, b is global variable. Let is only accessible in block scope
+        let a = (b = 123);
       }
       someFunct();
       // console.log(test2);    // since let is not accessible in parent hierarchy => error
