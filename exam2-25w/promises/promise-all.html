@@ -1,0 +1,54 @@
+<!-- TODO EVALUATE -->
+<html>
+  <body>
+    <script>
+      // Promise.all waits for multiple promises to complete in parallel and returns an array of their results
+
+      const fetchComments = () => {
+        console.log("Fetching comments...");
+
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            let success = true; // Success/Error fetching simulation
+            if (success) resolve(["Comment1", "Comment2"]);
+            else reject("Error in fetch comments");
+          }, 1500);
+        });
+      };
+
+      const fetchLikes = () => {
+        console.log("Fetching likes...");
+
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            let success = true; // Success/Error fetching simulation
+            if (success) resolve(10);
+            else reject("Error in fetch likes");
+          }, 500);
+        });
+      };
+
+      async function fetchPostData() {
+        try {
+          // Waiting for all promises and then handling the returned values
+          // First return value will be stored in comments variable, the other in likes
+          const [comments, likes] = await Promise.all([
+            // Using await, the console.logs will be executed when Promise.all has finished
+            fetchComments(),
+            fetchLikes(),
+          ]);
+          console.log("Comments:", comments);
+          console.log("Likes:", likes);
+        } catch (error) {
+          console.log("Error:", error); // Will be executed when error occurs in one of the two functions
+        }
+      }
+
+      fetchPostData();
+
+      // Output at the same time after everything was fetched:
+      // Comments: ['Comment1', 'Comment2']
+      // Likes: 10
+    </script>
+  </body>
+</html>
