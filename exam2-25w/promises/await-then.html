@@ -30,6 +30,7 @@
       async function getDataWithoutAwait() {
         try {
           console.log("Fetching data without await...");
+          
           const data = fetchData(); // fetchData is called but not awaited
           console.log(data); // Logs 'Promise { <pending> }' immediately
         } catch (err) {
@@ -37,41 +38,30 @@
         }
       }
 
-      getData(); // Output after 2 seconds: "Data received: <data>"
-      getDataWithoutAwait(); // Output immediately: "Promise { <pending> }" since the promise was not resolved before returning it
-    </script>
+      // Using promise chaining with .then/.catch
+      async function getData() {
+        console.log("Fetching data via promise...");
 
-    <script>
-      // Chaining with await/async
-      const fetchUser = () => {
-        return new Promise((resolve) => {
-          setTimeout(() => resolve({ id: 1, name: "Alice" }), 1000);
-        });
-      };
-
-      const fetchOrders = (userId) => {
-        return new Promise((resolve) => {
-          console.log(userId);
-
-          setTimeout(() => resolve(["Order1", "Order2"]), 1000);
-        });
-      };
-
-      async function fetchUserData() {
-        try {
-          console.log("Fetching user..");
-          const user = await fetchUser();
-          console.log("User fetched:", user);
-          console.log("Fetching order..");
-
-          const orders = await fetchOrders(user.id);
-          console.log("Orders fetched:", orders);
-        } catch (error) {
-          console.log("Error:", error);
-        }
+        fetchData() // Waits until `fetchData` resolves, then the first .then is triggered
+          .then((returnValue) => console.log(returnValue))
+          .catch((error) => console.error(error))
+          .finally(() => console.log("always executed")); // always executed after promise finishes
       }
 
-      fetchUserData();
+      // Returning awaited value
+      async function returnAwaitedData() {
+        try {
+          return await fetchData(); // fetchData is called but not awaited
+        } catch (err) {
+          console.log("Error:", err);
+        }
+      }
+      // getData(); // Output after 2 seconds: "Data received: <data>"
+      // getDataWithoutAwait(); // Output immediately: "Promise { <pending> }" since the promise was not resolved before returning it
+      // console.log(returnAwaitedData())
+      // const value = await returnAwaitedData(); // not possible out of async methods
+      getData();
+      // returnAwaitedData().then((returnValue) => console.log(returnValue))
     </script>
   </body>
 </html>
