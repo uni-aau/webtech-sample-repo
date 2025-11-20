@@ -10,8 +10,14 @@
 
         fetch(apiUrl) // fetch returns a promise
           .then((response) => {
-            console.log("Received json response, parsing it...");
-            return response.json(); // Parse the JSON from the response
+            console.log("Received json response");
+
+            if (!response.ok) {
+              throw new Error(`Request failed with status ${response.status}`);
+            }
+
+            console.log("Parsing it...");
+            return response.json(); // Parse the JSON from the response if response is OK
           })
           .then((data) => {
             console.log("Data received:", data); // Log the data received when it finished parsing the json
