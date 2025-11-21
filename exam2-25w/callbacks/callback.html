@@ -1,6 +1,6 @@
 <html>
   <body>
-    <button id="myButton"></button>
+    <button id="myButton">Button</button>
     <script>
       // Using higher order functions as callbacks
 
@@ -26,18 +26,9 @@
       console.log(value); // Value is undefined since the function does not wait until the timeout is finished and returns the variable before it gets set. Therefore, we use callbacks, to call the method when the waiting time (e.g. api fetch) is finished
     </script>
 
-    <script>
-      function fetchData(url, callback) {
-        setTimeout(() => {
-          const data = { name: "Alice", age: 25 };
-          callback(data); // Invoking the callback when data is ready (here simulated with 1s)
-        }, 1000);
-      }
 
-      fetchData("https://api.example.com", (data) => {
-        console.log(data); // This will run after the data is fetched
-      });
-    </script>
+
+
 
     <script>
       // Also widely used in event listeners

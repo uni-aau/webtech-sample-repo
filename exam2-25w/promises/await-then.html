@@ -15,7 +15,7 @@
       };
 
       // If you use await in function, you have to mark the function as async
-      async function getData() {
+      async function getDataWithAwait() {
         try {
           console.log("Fetching data...");
 
@@ -30,7 +30,7 @@
       async function getDataWithoutAwait() {
         try {
           console.log("Fetching data without await...");
-          
+
           const data = fetchData(); // fetchData is called but not awaited
           console.log(data); // Logs 'Promise { <pending> }' immediately
         } catch (err) {
@@ -39,7 +39,7 @@
       }
 
       // Using promise chaining with .then/.catch
-      async function getData() {
+      function getData() {
         console.log("Fetching data via promise...");
 
         fetchData() // Waits until `fetchData` resolves, then the first .then is triggered
@@ -51,17 +51,18 @@
       // Returning awaited value
       async function returnAwaitedData() {
         try {
-          return await fetchData(); // fetchData is called but not awaited
+          return await fetchData();
         } catch (err) {
           console.log("Error:", err);
         }
       }
-      // getData(); // Output after 2 seconds: "Data received: <data>"
+      // getDataWithAwait(); // Output after 2 seconds: "Data received: <data>"
       // getDataWithoutAwait(); // Output immediately: "Promise { <pending> }" since the promise was not resolved before returning it
+      // getData();
       // console.log(returnAwaitedData())
       // const value = await returnAwaitedData(); // not possible out of async methods
-      getData();
       // returnAwaitedData().then((returnValue) => console.log(returnValue))
+      // console.log("Testing when executed")
     </script>
   </body>
 </html>

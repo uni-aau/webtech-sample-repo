@@ -51,23 +51,6 @@
     </script>
 
     <script>
-      // Using .call(), .apply(), and .bind() with Regular Functions
-      // JavaScript provides three methods (call, apply, and bind) to explicitly set this context in functions
-      function introduce(city, country) {
-        console.log(`Hello, my name is ${this.name} from ${city}, ${country}`);
-      }
-
-      const person4 = { name: "Alice" };
-
-      introduce.call(person4, "New York", "USA"); // Output: Hello, my name is Alice from New York, USA
-
-      introduce.apply(person4, ["Paris", "France"]); // Output: Hello, my name is Alice from Paris, France
-
-      const introduceAlice = introduce.bind(person4, "London", "UK");
-      introduceAlice(); // Output: Hello, my name is Alice from London, UK
-    </script>
-
-    <script>
       // Arrow functions do not have their own this context
       // Instead, they inherit this from the surrounding lexical scope (the environment in which they were defined - Here: Global Context, not person6)
       // Arrow Functions cannot be used with .bind(), .call(), or .apply()

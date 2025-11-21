@@ -20,11 +20,13 @@
       console.log(result);
       result(); // Since result equals inner function, we can call it => It prints the message from the outer function
 
+
+      
+      // Also possible to return function directly via return
       function createCounter() {
         let count = 0; // Enclosed variable
 
-        // Also possible with arrow function and directly in return statement
-        return function () {
+        return function () { // Arrow functions also possible
           count += 1;
           return count;
         };
@@ -34,6 +36,8 @@
       console.log(counter()); // Output: 1
       console.log(counter()); // Output: 2
       console.log(counter()); // Output: 3
+
+
 
       // Also possible to give inner function more than one parameter, but they are ignored when calling the method
       function outer2(a, b) {
