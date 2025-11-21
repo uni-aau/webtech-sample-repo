@@ -50,5 +50,37 @@
 
       personC.talk(); // Output: "Hello from updated prototype function!" (new function)
     </script>
+
+    <script>
+      // Class Expressions (ES2015)
+      let Person = class Person1 {
+        constructor(a, b) {
+          this.a = a;
+          this.b = b;
+        }
+      };
+
+      class Person2 {
+        constructor(a, b) {
+          this.a = a;
+          this.b = b;
+
+          // New function created for each instance
+          this.greet2 = () => {
+            console.log("Hello from greet 2: " + this.a); // 'this' is lexically bound to the instance (refers to Person2)
+          };
+
+          // New function created for each instance
+          this.greet3 = function () {
+            console.log("Hello from greet 3: " + this.a); // 'this' in regular function (can change depending how it's called)
+          };
+        }
+
+        // Shared instance method (similar to prototypes)
+        greet() {
+          console.log("Hello from greet!");
+        }
+      }
+    </script>
   </bod>
 </html>
