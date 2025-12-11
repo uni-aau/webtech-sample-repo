@@ -10,15 +10,14 @@ import {BikesService} from "../../services/bikes.service";
   styleUrl: './bike.component.css'
 })
 export class BikeComponent {
-
-  @Input()
-  bike: Bike | undefined;
+  @Input() bike: Bike | undefined;
 
   @Output() deleteSuccess = new EventEmitter<number>();
 
   constructor(private bikesService: BikesService) {
   }
 
+  // TODO
   deleteItem() {
     if (this.bike) {
       this.bikesService.deleteBike(this.bike.bike_id).subscribe({
@@ -32,5 +31,4 @@ export class BikeComponent {
       )
     }
   }
-
 }

@@ -2,39 +2,35 @@ import {Component, OnInit} from '@angular/core';
 import {Bike} from "../../types/bike";
 import {BikesService} from "../../services/bikes.service";
 import {BikeComponent} from "../bike/bike.component";
-import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'bikes-component',
   standalone: true,
   imports: [
-    BikeComponent,
-    NgForOf
+    BikeComponent
   ],
   templateUrl: './bikes.component.html',
   styleUrl: './bikes.component.css'
 })
-
 export class BikesComponent implements OnInit {
   bikes: Bike[] = [];
 
   constructor(private bikesService: BikesService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.fetchData()
   }
 
-  fetchData() {
+  fetchData(): void {
     this.bikesService.getBikes().subscribe(data => {
       this.bikes = data;
       console.log(this.bikes)
     });
   }
 
-  onBikeDeleted(bikeId: number) {
+  onBikeDeleted(bikeId: number): void {
     console.log('Bike deleted with ID:', bikeId);
     this.fetchData()
   }
-
 }

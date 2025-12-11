@@ -1,7 +1,7 @@
 # Instruction
 ## Required
 - **Backend** (npm i for dependencies in /backend)
-    - Node >= v20.17.0
+    - Node >= v22.16.0
     - NPM >= v10.2.3
 - **Frontend** (npm i for dependencies in /frontend)
     - Angular >= 17
@@ -31,30 +31,24 @@
 ### Frontend
 - Create new Angular (>=17) application: ``ng new <name>``
   - Select CSS
-  - Choose between SSR and SSG (https://www.telerik.com/blogs/angular-basics-ssr-ssg-partial-hydration-angular-18)
+  - Choose if you want to use SSR and SSG (https://www.telerik.com/blogs/angular-basics-ssr-ssg-partial-hydration-angular-18) (here not necessary, CSR (Client Side Rendering) is sufficient)
   - (Optional) Using tailwindCSS for much easier style implementation: https://tailwindcss.com/
-    - ``npm install -D tailwindcss``
-    - ``npx tailwind init``
-    - In tailwind.config.js define the following structure
-      ```js
-      module.exports = {
-        content: ["./src/**/*.{html,js}"],
-        theme: {
-          extend: {},
-        },
-        plugins: [],
+    - ``npm install tailwindcss @tailwindcss/postcss postcss --force``
+    - Create a `.postcssrc.json` file in the root of the project and add the following:
+    ```json
+      {
+      "plugins": {
+        "@tailwindcss/postcss": {}
+        }
       }
-      ```
-    - Now add the following annotations to the main css file (styles.css):
-      ```css
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
-      ```
+    ```
+    - Add ``@import "tailwindcss";`` to ``./src/styles.css``
 - **Additional changes for our example:**
   - Creating child components with: ``ng g c /components/bikes`` and ``ng g c /components/bike``
   - Creating page component (optional) with: ``ng g c /pages/bikes`` (Here: not necessary but good abstraction when using navbar & footer)
     - Add all components you need into the page component. The page gets displayed.
+    - **Hint:** Rename the selector of components e.g. to ``xx-component`` instead of ``app-xx`` to separate from the pages.
+    - **Hint2:** Remove the "Component" part of the pages classes to distinguish between the components.
   - **Routing**
     - In **app.routes** you can set specific routes: ``{path: '', component: BikesComponent},``
   - Now we set that our **app.component.html** will use the router-outlet to handle routes: ``<router-outlet></router-outlet>`` (app.component.html)
@@ -64,6 +58,7 @@
   - Creating Service: ``ng g s /services/bikes``
     - Connect service with your components (see Angular guide or example)
   - Using **HTTPClient** to execute REST queries and handling requests by using observables.
+    - **Important:** You have to add ``provideHttpClient()`` to the providers in ``app.config.ts``
 
 # Execution
 - Start **pgAdmin/postgres** and **Docker Desktop**
