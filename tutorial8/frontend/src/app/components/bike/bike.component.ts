@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Bike} from "../../types/bike";
+import {Bike} from "../../interfaces/bike";
 import {BikesService} from "../../services/bikes.service";
 
 @Component({
