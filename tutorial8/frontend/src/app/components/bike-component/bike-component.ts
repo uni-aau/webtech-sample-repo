@@ -1,13 +1,13 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Bike} from "../../interfaces/bike";
-import {BikesService} from "../../services/bikes.service";
+import {Bike} from '../../interfaces/bike';
+import {BikesService} from '../../services/bikes.service';
 
 @Component({
   selector: 'bike-component',
   standalone: true,
   imports: [],
-  templateUrl: './bike.component.html',
-  styleUrl: './bike.component.css'
+  templateUrl: './bike-component.html',
+  styleUrl: './bike-component.css',
 })
 export class BikeComponent {
   @Input() bike: Bike | undefined;

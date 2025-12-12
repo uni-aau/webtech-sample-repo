@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {BikesComponent} from "../../components/bikes/bikes.component";
+import {BikesComponent} from '../../components/bikes-component/bikes-component';
 
 @Component({
   selector: 'app-bikes',
@@ -8,7 +8,7 @@ import {BikesComponent} from "../../components/bikes/bikes.component";
     BikesComponent
   ],
   templateUrl: './bikes.html',
-  styleUrl: './bikes.css'
+  styleUrl: './bikes.css',
 })
 export class Bikes {
 

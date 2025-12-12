@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Bike} from "../../interfaces/bike";
-import {BikesService} from "../../services/bikes.service";
-import {BikeComponent} from "../bike/bike.component";
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Bike} from '../../interfaces/bike';
+import {BikeComponent} from '../bike-component/bike-component';
+import {BikesService} from '../../services/bikes.service';
 
 @Component({
   selector: 'bikes-component',
@@ -9,13 +9,13 @@ import {BikeComponent} from "../bike/bike.component";
   imports: [
     BikeComponent
   ],
-  templateUrl: './bikes.component.html',
-  styleUrl: './bikes.component.css'
+  templateUrl: './bikes-component.html',
+  styleUrl: './bikes-component.css',
 })
 export class BikesComponent implements OnInit {
   bikes: Bike[] = [];
 
-  constructor(private bikesService: BikesService) {
+  constructor(private bikesService: BikesService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
@@ -26,6 +26,7 @@ export class BikesComponent implements OnInit {
     this.bikesService.getBikes().subscribe(data => {
       this.bikes = data;
       console.log(this.bikes)
+      this.cdr.detectChanges(); // helps to trigger Angulars change detection
     });
   }
 

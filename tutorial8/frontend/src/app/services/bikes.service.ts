@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Bike} from "../interfaces/bike";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Bike} from '../interfaces/bike';
 
 const baseURL = "http://localhost:3000/api/bikes"; // localhost part can also be extracted to env variables
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BikesService {
 

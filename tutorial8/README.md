@@ -4,7 +4,7 @@
     - Node >= v22.16.0
     - NPM >= v10.2.3
 - **Frontend** (npm i for dependencies in /frontend)
-    - Angular >= 17
+    - Angular >= 21
 - **Database**
     - Docker Desktop
     - PostgreSQL > 15
@@ -28,11 +28,12 @@
   - Add new PostgresSQL database in this server:
     - Database Name: **postgres**
     - Database Password: **postgres**
-### Frontend
-- Create new Angular (>=17) application: ``ng new <name>``
-  - Select CSS
+### Frontend (with Tailwind CSS)
+- Add latest version of Angular CI: ``npm install -g @angular/cli@latest``
+- Create new Angular (>=21) application: ``ng new <name>``
+  - Select **Tailwind CSS** (you can also select CSS and install Tailwind CSS later)
   - Choose if you want to use SSR and SSG (https://www.telerik.com/blogs/angular-basics-ssr-ssg-partial-hydration-angular-18) (here not necessary, CSR (Client Side Rendering) is sufficient)
-  - (Optional) Using tailwindCSS for much easier style implementation: https://tailwindcss.com/
+  - If you want to install Tailwind CSS afterwards, follow these steps, otherwise skip them (https://tailwindcss.com/)
     - ``npm install tailwindcss @tailwindcss/postcss postcss --force``
     - Create a `.postcssrc.json` file in the root of the project and add the following:
     ```json
@@ -44,18 +45,18 @@
     ```
     - Add ``@import "tailwindcss";`` to ``./src/styles.css``
 - **Additional changes for our example:**
-  - Creating child components with: ``ng g c /components/bikes`` and ``ng g c /components/bike``
-  - Creating page component (optional) with: ``ng g c /pages/bikes`` (Here: not necessary but good abstraction when using navbar & footer)
+  - Creating child components with: ``ng g c /components/bikes.component --standalone`` and ``ng g c /components/bike.component --standalone``
+  - Creating page component (optional) with: ``ng g c /pages/bikes --standalone`` (Here: not necessary but good abstraction when using navbar & footer)
     - Add all components you need into the page component. The page gets displayed.
     - **Hint:** Rename the selector of components e.g. to ``xx-component`` instead of ``app-xx`` to separate from the pages.
     - **Hint2:** Remove the "Component" part of the pages classes to distinguish between the components.
   - **Routing**
     - In **app.routes** you can set specific routes: ``{path: '', component: BikesComponent},``
-  - Now we set that our **app.component.html** will use the router-outlet to handle routes: ``<router-outlet></router-outlet>`` (app.component.html)
+  - Now we set that our **app.html** will use the router-outlet to handle routes: ``<router-outlet></router-outlet>`` (app.html)
   - Now we define an interface for our bikes: ``ng g i /types/bike``
     - Here we define all fields, that bike can have (see database schema)
     - Here: ``bike_id, bike_name, is_avaiable, size, price``
-  - Creating Service: ``ng g s /services/bikes``
+  - Creating Service: ``ng g s /services/bikes.service``
     - Connect service with your components (see Angular guide or example)
   - Using **HTTPClient** to execute REST queries and handling requests by using observables.
     - **Important:** You have to add ``provideHttpClient()`` to the providers in ``app.config.ts``
