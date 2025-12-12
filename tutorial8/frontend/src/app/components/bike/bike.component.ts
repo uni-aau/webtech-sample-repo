@@ -17,7 +17,6 @@ export class BikeComponent {
   constructor(private bikesService: BikesService) {
   }
 
-  // TODO
   deleteItem() {
     if (this.bike) {
       this.bikesService.deleteBike(this.bike.bike_id).subscribe({
@@ -25,7 +24,7 @@ export class BikeComponent {
             this.deleteSuccess.emit(this.bike?.bike_id); // Notify parent
           },
           error: (err) => {
-            console.error("Could not delete bike")
+            console.error("Could not delete bike", err)
           }
         }
       )

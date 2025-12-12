@@ -18,9 +18,9 @@
 - You can create a SQL script like in the previous assignments and import it using psql or PgAdmin
 - Another approach: **Docker Compose**
   - Needed: **Docker Desktop**  (has to run in background)
-  - Specify ``docker-compose-yml`` structure & database handling (here in initdb folder)
-  - Populate database using: ``docker-compose up -d``
-  - Delete database: ``docker-compose down -v``
+  - Specify ``docker-compose.yml`` structure & database handling (here in initdb folder)
+  - Populate database using: ``docker compose up -d``
+  - Delete database: ``docker compose down -v``
 - In this example you have to manually create a database in pgAdmin:
   - Database Hostname/address: **localhost**
   - Database Port: **5433**
